@@ -9,10 +9,15 @@ public class PlayerController : MonoBehaviour {
     public GameObject Bullet;
     public GameObject Bullet2;
 
+    AudioSource saw;
+
+    public AudioClip AIE;
+
 
     // Use this for initialization
     void Start () {
         rig = GetComponent<Rigidbody>();
+        saw = GameObject.FindObjectOfType<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -51,5 +56,14 @@ public class PlayerController : MonoBehaviour {
         Bullet2F.transform.parent = null;
         Bullet2F.SetActive(true);
     }
-   
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            saw.PlayOneShot(AIE,0.5f);
+        }
+
+    }
+
 }
