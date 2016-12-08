@@ -28,6 +28,13 @@ public class PlayerController : MonoBehaviour {
         rig.MovePosition(transform.position + movement);
         rig.MoveRotation(Quaternion.Euler(dir));
 
+
+
+        Time.timeScale = Mathf.Abs(vAxis) + Mathf.Abs(hAxis)+  0.1f;
+
+
+
+
         if (Input.GetButtonDown("ButtonA"))
         {
             Shot();
