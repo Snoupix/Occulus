@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour {
     public float speed = 10;
     public float turnSpeed = 200;
     Vector3 dir;
+    public GameObject Bullet;
+    public GameObject Bullet2;
 
 
     // Use this for initialization
@@ -25,5 +27,22 @@ public class PlayerController : MonoBehaviour {
 
         rig.MovePosition(transform.position + movement);
         rig.MoveRotation(Quaternion.Euler(dir));
+
+        if (Input.GetButtonDown("ButtonA"))
+        {
+            Shot();
+        }
     }
+
+
+    public void Shot()
+    {
+        GameObject BulletF = Instantiate(Bullet, Bullet.transform.parent) as GameObject;
+        BulletF.transform.parent = null;
+        BulletF.SetActive(true);
+        GameObject Bullet2F = Instantiate(Bullet2, Bullet2.transform.parent) as GameObject;
+        Bullet2F.transform.parent = null;
+        Bullet2F.SetActive(true);
+    }
+   
 }
